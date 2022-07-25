@@ -10,4 +10,6 @@
 	* Ubuntu
 	* Debian (tbd)
 
+maybe use flatpak?!
+
 
