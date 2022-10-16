@@ -10,7 +10,6 @@ RUN cp $domain.* /etc/nginx
 # nginx setup done
 RUN apt update && apt install -y fcgiwrap default-jre
 COPY default /etc/nginx/sites-available/
-COPY openpdfsign.jar .
 COPY entrypoint.sh .
 COPY test1.pdf /var/www/html
 COPY test2.pdf /var/www/html
