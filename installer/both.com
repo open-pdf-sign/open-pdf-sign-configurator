@@ -29,4 +29,4 @@ server {
 
   ssl_certificate      cert.pem;
   ssl_certificate_key  cert.key;
-}
+} # managed by open-pdf-sign-configurator

@@ -176,6 +176,14 @@ class UnspacedList(List[Any]):
             super().insert(idx, item)
         self.dirty = True
 
+
+    def add(self, i: "SupportsIndex", x: Any) -> None:
+        """Insert object before index."""
+        idx = operator.index(i)
+        item, spaced_item = self._coerce(x)
+        slicepos = self._spaced_position(idx) if idx < len(self) else len(self.spaced)
+        self.spaced.insert(slicepos, spaced_item)
+
     def append(self, x: Any) -> None:
         """Append object to the end of the list."""
         item, spaced_item = self._coerce(x)
