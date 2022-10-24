@@ -1,6 +1,6 @@
 def installMenu(info):
     # Create the menu
-    print("Which names wowuld you like to activate PDF signing for?")
+    print("Which names would you like to activate PDF signing for?")
     print("------------------------------------------------------------")
     i = 1
     for name in info:
@@ -11,11 +11,18 @@ def installMenu(info):
         "Select the appropriate numbers separated by commas or leave input blank to select all options shown (Enter 'c' to cancel):")
     x = input()
     if x == "c": return
+    optionsInt = list(range(len(info)))
     if x != "":
         options = x.split(",")
         try:
-            options = [info[int(o) - 1] for o in options]
-
+            optionsInt = [int(o) - 1 for o in options]
         except:
             print("didn't recognize input")
-        return options
+
+    if len(set(optionsInt)) is not len(optionsInt):
+        print("multiple selections")
+    for o in optionsInt:
+        if o < 0 or o >= len(info):
+            print(o, "out of range")
+    options = [info[o - 1] for o in optionsInt]
+    return options

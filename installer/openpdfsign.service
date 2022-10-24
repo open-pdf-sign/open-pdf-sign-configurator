@@ -1,0 +1,24 @@
+[Unit]
+Description=Open-Pdf-Sign-Server
+After=network.target auditd.service
+# add dependency on stunnel if stunnel is used:
+# After=network.target auditd.service,stunnel.service
+
+[Service]
+Restart=always
+# restart every 180min
+RuntimeMaxSec=5400
+WorkingDirectory=/opt/netztest/server/qos
+User=root
+PermissionsStartOnly=true
+ExecStartPre=/bin/sh -c '/sbin/setcap "cap_net_bind_service=+ep" `/usr/bin/realpath /usr/bin/java`'
+ExecStart=@/usr/bin/java qos-server -jar RMBTQoSTestServer.jar
+TimeoutStopSec=60
+Restart=always
+StandardOutput=null
+StandardError=journal
+
+
+
+[Install]
+WantedBy=multi-user.target
