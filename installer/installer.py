@@ -80,9 +80,15 @@ class Installer:
 
 installer = Installer()
 info = installer.getNginxInfo()
+print(info)
 selection = menu.installMenu(info)
 installer.insertBlocks(selection)
 dump = nginxparser.dumps(installer.parsed)
+# when passing server_name there can be multiple, make sure to pass all to yml file
+# which java
+
+# take full path of keys
 # spin up server for pdfs and pass path to keys
 # https://github.com/rtr-nettest/rmbt-server/blob/master/rmbt.service
 print(dump)
+# install via apt-get
