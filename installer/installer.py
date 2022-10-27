@@ -54,28 +54,27 @@ class Installer:
                 if element == "#":
                     if "managed by open-pdf-sign" in server[1]:
                         print(keys[-1]["server_name"], "already configured")
-            counter+=1
+            counter += 1
         return keys
 
     def insertBlocks(self, selection):
         port = '8090'
         position = 0
-        directive = [['\n    ', 'location', ' ', '~', ' ', '\\.(pdf)$', ' '],[
-                     ['\n    ', 'proxy_set_header', ' ', 'X-Forwarded-For', ' ', '$proxy_add_x_forwarded_for', ' '],
-                     ['\n    ', 'proxy_set_header', ' ', 'X-Forwarded-Proto', ' ', '$scheme'],
-                     ['\n    ', 'proxy_set_header', ' ', 'X-Real-IP', ' ', '$remote_addr'],
-                     ['\n    ', 'proxy_set_header', ' ', 'Host', ' ', '$http_host'],
-                     ['\n    ', 'proxy_set_header', ' ', 'X-Open-Pdf-Sign-Nginx-Version', ' ', '1.0.0'],
-                     ['\n    ', 'proxy_set_header', ' ', 'X-Open-Pdf-Sign-File', ' ', '$document_root$uri'],
-                     ['\n    ', 'proxy_pass', ' ', 'http://127.0.0.1:' + port + '/v1/sign'],
-
-                     ['\n    ', 'proxy_redirect', ' ', 'off'],
-                     ]]
+        directive = [['\n    ', 'location', ' ', '~', ' ', '\\.(pdf)$', ' '], [
+            ['\n    ', 'proxy_set_header', ' ', 'X-Forwarded-For', ' ', '$proxy_add_x_forwarded_for', ' '],
+            ['\n    ', 'proxy_set_header', ' ', 'X-Forwarded-Proto', ' ', '$scheme'],
+            ['\n    ', 'proxy_set_header', ' ', 'X-Real-IP', ' ', '$remote_addr'],
+            ['\n    ', 'proxy_set_header', ' ', 'Host', ' ', '$http_host'],
+            ['\n    ', 'proxy_set_header', ' ', 'X-Open-Pdf-Sign-Nginx-Version', ' ', '1.0.0'],
+            ['\n    ', 'proxy_set_header', ' ', 'X-Open-Pdf-Sign-File', ' ', '$document_root$uri'],
+            ['\n    ', 'proxy_pass', ' ', 'http://127.0.0.1:' + port + '/v1/sign'],
+            ['\n    ', 'proxy_redirect', ' ', 'off'],
+        ]]
         comment = [' ', '#', ' managed by open-pdf-sign-configurator']
         for one in selection:
             serverBlock = one["index"]
             self.parsed[serverBlock][1].insert(position, directive)
-            self.parsed[serverBlock][1].insert(position+1, comment)
+            self.parsed[serverBlock][1].insert(position + 1, comment)
 
 
 installer = Installer()
@@ -91,4 +90,4 @@ dump = nginxparser.dumps(installer.parsed)
 # spin up server for pdfs and pass path to keys
 # https://github.com/rtr-nettest/rmbt-server/blob/master/rmbt.service
 print(dump)
-# install via apt-get
+# install via apt-get https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/+

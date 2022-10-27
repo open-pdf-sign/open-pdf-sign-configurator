@@ -24,5 +24,5 @@ def installMenu(info):
     for o in optionsInt:
         if o < 0 or o >= len(info):
             print(o, "out of range")
-    options = [info[o - 1] for o in optionsInt]
+    options = [info[o] for o in optionsInt]
     return options
