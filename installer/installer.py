@@ -6,8 +6,11 @@ import menu
 
 class Installer:
     exe = "nginx"
-    configFile = "both.com"
+    configFile = ""
     parsed = None
+
+    def __init__(self, configFile):
+        self.configFile = configFile
 
     def checkExe(self, exe):
         path, _ = os.path.split(exe)
@@ -28,10 +31,6 @@ class Installer:
         with open(self.configFile) as filee:
             self.parsed = nginxparser.load(filee)
 
-        # get location of keys
-        # ssl_certificate
-        # ssl_certificate_key
-
         keys = []
         # check each server block
         counter = 0
@@ -43,7 +42,7 @@ class Installer:
                     for el in element:
                         key["index"] = counter
                         if el[0] == "server_name":
-                            key["server_name"] = el[1]
+                            key["server_name"] = [el[e] for e in range(1,len(el))]
                         if el[0] == "ssl_certificate":
                             key["ssl_certificate"] = el[1]
                         if el[0] == "ssl_certificate_key":
@@ -77,7 +76,8 @@ class Installer:
             self.parsed[serverBlock][1].insert(position + 1, comment)
 
 
-installer = Installer()
+configFile = "multiple.com"
+installer = Installer(configFile)
 info = installer.getNginxInfo()
 print(info)
 selection = menu.installMenu(info)

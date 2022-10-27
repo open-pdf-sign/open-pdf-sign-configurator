@@ -17,7 +17,7 @@ server {
 
 # HTTPS, duplicate by means of wildcard
 server {
-  server_name *.both.com;
+  server_name *..com;
   listen 5001 ssl;
 
   ssl_certificate      cert.pem;
