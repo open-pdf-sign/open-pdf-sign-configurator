@@ -41,11 +41,11 @@ class NginxInstaller:
                     for el in element:
                         key["index"] = counter
                         if el[0] == "server_name":
-                            key["server_name"] = [el[e] for e in range(1,len(el))]
+                            key["host"] = [el[e] for e in range(1,len(el))]
                         if el[0] == "ssl_certificate":
-                            key["ssl_certificate"] = el[1]
+                            key["certificate"] = el[1]
                         if el[0] == "ssl_certificate_key":
-                            key["ssl_certificate_key"] = el[1]
+                            key["key"] = el[1]
 
                         if len(key.keys()) == 4:
                             keys.append(key)

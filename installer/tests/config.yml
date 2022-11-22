@@ -8,7 +8,9 @@ certificates:
   - host: _ # default case
     key: /etc/letsencrypt/live/example.com/key.pem
     certificate: /etc/letsencrypt/live/example.com/fullchaim.pem
-  - host: exampleA.com exampleB.com # space separated, as in nginx conf
+  - host:
+    - exampleA.com
+    - exampleB.com
     key: /etc/letsencrypt/live/example.com/key.pem
     certificate: /etc/letsencrypt/live/example.com/fullchaim.pem
   - host: example.com

@@ -4,7 +4,7 @@ def installMenu(info):
     print("------------------------------------------------------------")
     i = 1
     for name in info:
-        print(str(i) + ":", name["server_name"])
+        print(str(i) + ":", name["host"])
         i += 1
     print("------------------------------------------------------------")
     print(
@@ -23,7 +23,7 @@ def installMenu(info):
         print("multiple selections")
     for o in optionsInt:
         if o < 0 or o >= len(info):
-            print(o, "out of range")
+            print(o+1, "out of range")
             return []
     options = [info[o] for o in optionsInt]
     return options
