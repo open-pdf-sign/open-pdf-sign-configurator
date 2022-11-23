@@ -1,9 +1,9 @@
 import os
 
-import nginxparser
+from opsinstaller import nginxparser
 
 
-class NginxInstaller:
+class NginxConfigManipulator:
     exe = "nginx"
     configFile = ""
     parsed = None
@@ -65,7 +65,7 @@ class NginxInstaller:
             ['\n    ', 'proxy_set_header', ' ', 'Host', ' ', '$http_host'],
             ['\n    ', 'proxy_set_header', ' ', 'X-Open-Pdf-Sign-Nginx-Version', ' ', '1.0.0'],
             ['\n    ', 'proxy_set_header', ' ', 'X-Open-Pdf-Sign-File', ' ', '$document_root$uri'],
-            ['\n    ', 'proxy_pass', ' ', 'http://127.0.0.1:' + port + '/v1/sign'],
+            ['\n    ', 'proxy_pass', ' ', 'http://127.0.0.1:' + port + '/v1/sign$1'],
             ['\n    ', 'proxy_redirect', ' ', 'off'],
         ]]
         comment = [' ', '#', ' managed by open-pdf-sign-configurator']
