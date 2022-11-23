@@ -1,3 +1,5 @@
+import os
+
 from yaml import dump
 
 
@@ -14,6 +16,9 @@ def saveConfigToYml(services, configFile):
     pass
 
 
+def getNginxConfigs( path):
+    paths = os.listdir(path)
+    return paths
 def startServerAsService(configFile):
     # write the service file
     # (re)start service

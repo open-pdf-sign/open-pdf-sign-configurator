@@ -69,7 +69,6 @@ class NginxInstaller:
             ['\n    ', 'proxy_redirect', ' ', 'off'],
         ]]
         comment = [' ', '#', ' managed by open-pdf-sign-configurator']
-        for one in selection:
-            serverBlock = one["index"]
+        for serverBlock in selection:
             self.parsed[serverBlock][1].insert(position, directive)
             self.parsed[serverBlock][1].insert(position + 1, comment)
