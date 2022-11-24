@@ -1,3 +1,5 @@
+import io
+
 from opsinstaller import menu
 from opsinstaller import nginxparser
 from opsinstaller import utils
@@ -10,7 +12,7 @@ def run(stage="test"):
         ymlConfigFilePath = "config.yml"
     else:
         ymlConfigFilePath = "/etc/openpdfsign/config.yml"
-        nginxConfigsDir = "/etc/nginx/sites-available"
+        nginxConfigsDir = "/etc/nginx/sites-available/"
 
     nginxConfigs = utils.getNginxConfigs(nginxConfigsDir)
     installers = []
@@ -30,5 +32,6 @@ def run(stage="test"):
             nginxDump = nginxparser.dumps(installer.parsed)
             print(nginxDump)
         else:
-            nginxparser.dump(installer.parsed, installer.configFile)
+            with io.open(installer.configFile, "w", encoding="utf-8") as config:
+                nginxparser.dump(installer.parsed, config)
     return services
