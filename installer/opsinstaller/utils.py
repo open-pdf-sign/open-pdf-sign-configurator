@@ -1,5 +1,5 @@
 import os
-
+import subprocess
 from yaml import dump
 
 
@@ -15,11 +15,17 @@ def saveConfigToYml(services, configFile):
         dump(config, ymlConfig)
     pass
 
+def createInstallDirs( path):
+    isdir = os.path.isdir(path)
+    if not isdir:
+        os.mkdir(path)
 
 def getNginxConfigs( path):
     paths = os.listdir(path)
     return paths
-def startServerAsService(configFile):
+def startServerAsService(configFile, installpath):
+    subprocess.check_output("cp openpdfsign.service /etc/systemd/system/", shell=True)
+    subprocess.check_output()
     # write the service file
     # (re)start service
     pass

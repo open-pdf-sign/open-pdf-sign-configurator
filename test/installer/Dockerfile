@@ -11,8 +11,11 @@ COPY test1.pdf /var/www/html
 COPY test2.pdf /var/www/html
 # nginx setup done
 
-RUN apt update && apt install -y default-jre
+RUN apt update && apt install -y default-jre python3 python3-pip
 COPY openpdfsign.jar .
+RUN pip install pyparsing==3.0.9 PyYAML
+RUN pip install -i https://test.pypi.org/simple/ openpdfsign-configurator==1.0.0
+RUN opsconfigurator
 COPY entrypoint.sh .
 RUN chmod +x ./entrypoint.sh
 EXPOSE 443

@@ -4,7 +4,7 @@ Description=Open-Pdf-Sign-Server
 [Service]
 Restart=always
 User=root
-ExecStart=/usr/bin/java -jar openpdfsignserver.jar
+ExecStart=/usr/bin/java -jar openpdfsignserver.jar --
 StandardOutput=null
 StandardError=journal
 

@@ -1,20 +1,23 @@
 from opsinstaller import nginxInstaller
 from opsinstaller import utils
 
-stage = "test"
-
+stage = "prod"
+installpath = "/etc/openpdfsign/"
+ymlConfigFilePath = installpath + "config.yml"
 if stage == "test":
     ymlConfigFilePath = "config.yml"
-else:
-    ymlConfigFilePath = "/etc/openpdfsign/config.yml"
+    installpath = "."
 
 
 def main():
     services = nginxInstaller.run(stage)
     # save all to yml file
+    utils.createInstallDirs(installpath)
     utils.saveConfigToYml(services, ymlConfigFilePath)
-    utils.startServerAsService(ymlConfigFilePath)
+    utils.startServerAsService(ymlConfigFilePath, installpath)
 
 # which java
 
-# install via apt-get https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/+
+# install via apt-get https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/
+# https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6
+# https://realpython.com/pypi-publish-python-package/#prepare-your-package-for-publication

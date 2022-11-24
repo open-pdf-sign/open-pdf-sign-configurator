@@ -1,2 +1,4 @@
 .idea
 installer/__pycache__
+installer/build
+installer/dist
