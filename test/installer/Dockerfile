@@ -13,7 +13,7 @@ COPY test2.pdf /var/www/html
 
 RUN apt update && apt install -y default-jre python3 python3-pip
 RUN pip install pyparsing==3.0.9 PyYAML
-RUN pip install -i https://test.pypi.org/simple/ openpdfsign-configurator==1.0.4
+RUN pip install -i https://test.pypi.org/simple/ openpdfsign-configurator==1.0.5
 COPY entrypoint.sh .
 RUN chmod +x ./entrypoint.sh
 EXPOSE 443

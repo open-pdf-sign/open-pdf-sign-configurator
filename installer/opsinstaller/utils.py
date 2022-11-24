@@ -1,10 +1,10 @@
 import os
+import sys
 import subprocess
 import requests
 from yaml import dump
 
-
-jarUrl = "https://github.com/open-pdf-sign/open-pdf-sign/releases/download/v0.0.2-rc.1/open-pdf-sign.jar"
+jarUrl = "https://github.com/open-pdf-sign/open-pdf-sign/releases/latest/download/open-pdf-sign.jar"
 serviceContent = "[Unit]\n" \
                  "Description=Open-Pdf-Sign-Server\n" \
                  "\n" \
@@ -48,10 +48,23 @@ def startServerAsService(configFile, installpath):
         serviceFile.write(serviceContent + configFile)
     r = requests.get(jarUrl, allow_redirects=True)
     with open(installpath+"openpdfsign.jar") as jarFile:
-        jarFile.write(r.content)
+        print("Downloading jar file")
+        response = requests.get(jarUrl, stream=True)
+        total_length = response.headers.get('content-length')
 
-    subprocess.check_output("service nginx reload")
-    subprocess.check_output("systemctl enable openpdfsign")
-    subprocess.check_output("systemctl start openpdfsign")
+        if total_length is None: # no content length header
+            jarFile.write(response.content)
+        else:
+            dl = 0
+            total_length = int(total_length)
+            for data in response.iter_content(chunk_size=4096):
+                dl += len(data)
+                jarFile.write(data)
+                done = int(50 * dl / total_length)
+                sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )
+                sys.stdout.flush()
+    #subprocess.check_output("service nginx reload")
+    #subprocess.check_output("systemctl enable openpdfsign")
+    #subprocess.check_output("systemctl start openpdfsign")
     # write the service file
     # (re)start service
