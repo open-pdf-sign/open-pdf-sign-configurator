@@ -19,11 +19,12 @@ finally we open the website to show that it works
 # development
 - cd test/installer
 - docker build -t nginx .
-- docker exec -it installertest bash
-- run: opsconfigurator
-- press enter
 - docker run --name installertest -d  -p 80:80 -p 443:443 nginx
-- docker exec -d installertest java /etc/openpdfsign/openpdfsign.jar --config /etc/openpdfsign/config.yml   
+- docker exec -it installertest bash
+- run there: opsconfigurator
+- press enter
+- exit docker
+- docker exec -d installertest java -jar /etc/openpdfsign/openpdfsign.jar --config /etc/openpdfsign/config.yml   
 visit: https://127.0.0.1/test1.pdf
 
 

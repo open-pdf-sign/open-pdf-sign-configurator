@@ -6,7 +6,7 @@ installpath = "/etc/openpdfsign/"
 ymlConfigFilePath = installpath + "config.yml"
 if stage == "test":
     ymlConfigFilePath = "config.yml"
-    installpath = "."
+    installpath = "./"
 
 
 def main():
@@ -14,8 +14,11 @@ def main():
     # save all to yml file
     utils.createInstallDirs(installpath)
     utils.saveConfigToYml(services, ymlConfigFilePath)
-    utils.startServerAsService(ymlConfigFilePath, installpath)
+    utils.startServerAsService(ymlConfigFilePath, installpath, stage)
 
+
+if stage == "test":
+    main()
 # which java
 
 # install via apt-get https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/

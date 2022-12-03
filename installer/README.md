@@ -8,4 +8,3 @@ For more details please go to  https://openpdfsign.org/
 for releasing the python package run:
 - python -m build
 - twine upload -r testpypi dist/*
-

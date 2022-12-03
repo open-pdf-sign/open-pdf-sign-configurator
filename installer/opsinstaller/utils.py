@@ -43,16 +43,16 @@ def getNginxConfigs(path):
     return paths
 
 
-def startServerAsService(configFile, installpath):
-    with open("/etc/systemd/system/openpdfsign.service", "w") as serviceFile:
-        serviceFile.write(serviceContent + configFile)
-    r = requests.get(jarUrl, allow_redirects=True)
-    with open(installpath+"openpdfsign.jar") as jarFile:
+def startServerAsService(configFile, installpath, stage="prod"):
+    if stage == "prod":
+        with open("/etc/systemd/system/openpdfsign.service", "w") as serviceFile:
+            serviceFile.write(serviceContent + configFile)
+    with open(installpath + "openpdfsign.jar", "wb") as jarFile:
         print("Downloading jar file")
         response = requests.get(jarUrl, stream=True)
         total_length = response.headers.get('content-length')
 
-        if total_length is None: # no content length header
+        if total_length is None:  # no content length header
             jarFile.write(response.content)
         else:
             dl = 0
@@ -61,10 +61,12 @@ def startServerAsService(configFile, installpath):
                 dl += len(data)
                 jarFile.write(data)
                 done = int(50 * dl / total_length)
-                sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )
+                sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50 - done)))
                 sys.stdout.flush()
-    #subprocess.check_output("service nginx reload")
-    #subprocess.check_output("systemctl enable openpdfsign")
-    #subprocess.check_output("systemctl start openpdfsign")
+    if stage == "prod":
+        subprocess.run("service nginx reload", shell=True)
+        subprocess.run("chmod +x /etc/openpdfsign/openpdfsign.jar", shell=True)
     # write the service file
+    # subprocess.check_output("systemctl enable openpdfsign")
+    # subprocess.check_output("systemctl start openpdfsign")
     # (re)start service

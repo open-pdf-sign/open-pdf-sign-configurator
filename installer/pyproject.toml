@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openpdfsign-configurator"
-version = "1.0.5"
+version = "1.0.7"
 description = "This installs open-pdf-sign as server and signs all your PDFs served with Nginx with your SSL certificate"
 readme = "README.md"
 authors = [{ name = "Thomas Schreiber", email = "thomas@netzbeweis.com" },
