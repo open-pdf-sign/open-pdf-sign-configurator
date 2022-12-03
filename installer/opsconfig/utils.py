@@ -68,6 +68,6 @@ def startServerAsService(configFile, installpath, stage="prod"):
         subprocess.run("chmod +x /etc/openpdfsign/openpdfsign.jar", shell=True)
     # write the service file
     # subprocess.check_output("systemctl enable openpdfsign")
-    subprocess.check_output("systemctl daemon-reload")
-    subprocess.check_output("systemctl start openpdfsign.service")
+    subprocess.run("systemctl daemon-reload", shell=True)
+    subprocess.run("systemctl start openpdfsign.service", shell=True)
     # (re)start service
