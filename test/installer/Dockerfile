@@ -12,8 +12,8 @@ COPY test2.pdf /var/www/html
 # nginx setup done
 
 RUN apt update && apt install -y default-jre python3 python3-pip
-RUN pip install pyparsing==3.0.9 PyYAML requests==2.28.1
-RUN pip install -i https://test.pypi.org/simple/ openpdfsign-configurator==1.0.7
+#RUN pip install pyparsing==3.0.9 PyYAML requests==2.28.1
+RUN pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple openpdfsign-configurator==1.0.8
 COPY entrypoint.sh .
 RUN chmod +x ./entrypoint.sh
 EXPOSE 443

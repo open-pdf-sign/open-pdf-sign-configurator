@@ -1,16 +1,16 @@
 # pyproject.toml
 
 [build-system]
-requires      = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "openpdfsign-configurator"
-version = "1.0.7"
+version = "1.0.9"
 description = "This installs open-pdf-sign as server and signs all your PDFs served with Nginx with your SSL certificate"
 readme = "README.md"
 authors = [{ name = "Thomas Schreiber", email = "thomas@netzbeweis.com" },
-{ name = "Philipp Omenitsch", email = "philipp@netzbeweis.com" }
+    { name = "Philipp Omenitsch", email = "philipp@netzbeweis.com" }
 ]
 license = { file = "LICENSE" }
 classifiers = [
@@ -20,9 +20,9 @@ classifiers = [
 ]
 keywords = ["configurator", "sign", "pdf", "installer"]
 dependencies = [
-    "pyparsing >= 3.0.9",
-    "PyYAML",
-    "requests"
+    "pyparsing>=3.0.9",
+    "PyYAML>=6.0",
+    "requests>=2.28.1"
 ]
 requires-python = ">=3.9"
 

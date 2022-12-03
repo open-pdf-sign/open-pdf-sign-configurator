@@ -49,6 +49,7 @@ class NginxConfigManipulator:
 
                         if len(key.keys()) == 4:
                             keys.append(key)
+                            break
                 if element == "#":
                     if "managed by open-pdf-sign" in server[1]:
                         print(keys[-1]["server_name"], "already configured")
