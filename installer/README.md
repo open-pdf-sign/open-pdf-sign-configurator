@@ -10,12 +10,19 @@ For more details please go to  https://openpdfsign.org/
 * python 3.9 or high
 ## Install
 In order to install the configurator run
-```
+```bash
 apt-get install default-jre python3 python3-pip
 pip install openpdfsign-configurator
 opsconfig
 ```
 
+
+If you want to remove, remove relevant blocks in your Nginx config and run
+
+```bash
+rm /etc/systemd/system/openpdfsign.service
+rm -rf /etc/openpdfsign
+```
 
 
 ### Development
