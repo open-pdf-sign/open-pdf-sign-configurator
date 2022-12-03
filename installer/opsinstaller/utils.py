@@ -16,7 +16,7 @@ serviceContent = "[Unit]\n" \
                  "User=root\n" \
                  "StandardOutput=null\n" \
                  "StandardError=journal\n" \
-                 "ExecStart=/usr/bin/java -jar openpdfsignserver.jar --config "
+                 "ExecStart=/usr/bin/java -jar /etc/openpdfsign/openpdfsign.jar --config "
 
 
 def saveConfigToYml(services, configFile):
@@ -68,5 +68,6 @@ def startServerAsService(configFile, installpath, stage="prod"):
         subprocess.run("chmod +x /etc/openpdfsign/openpdfsign.jar", shell=True)
     # write the service file
     # subprocess.check_output("systemctl enable openpdfsign")
-    # subprocess.check_output("systemctl start openpdfsign")
+    subprocess.check_output("systemctl daemon-reload")
+    subprocess.check_output("systemctl start openpdfsign.service")
     # (re)start service

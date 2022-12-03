@@ -1,7 +1,7 @@
 from opsinstaller import nginxInstaller
 from opsinstaller import utils
 
-stage = "test"
+stage = "prod"
 installpath = "/etc/openpdfsign/"
 ymlConfigFilePath = installpath + "config.yml"
 if stage == "test":
