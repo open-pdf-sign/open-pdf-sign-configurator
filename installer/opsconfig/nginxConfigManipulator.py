@@ -1,6 +1,6 @@
 import os
 
-from opsinstaller import nginxparser
+from opsconfig import nginxparser
 
 
 class NginxConfigManipulator:

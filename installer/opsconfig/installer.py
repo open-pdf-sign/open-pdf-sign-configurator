@@ -1,5 +1,5 @@
-from opsinstaller import nginxInstaller
-from opsinstaller import utils
+from opsconfig import nginxInstaller
+from opsconfig import utils
 
 stage = "prod"
 installpath = "/etc/openpdfsign/"
@@ -19,8 +19,5 @@ def main():
 
 if stage == "test":
     main()
-# which java
 
 # install via apt-get https://earthly.dev/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/
-# https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6
-# https://realpython.com/pypi-publish-python-package/#prepare-your-package-for-publication

@@ -1,9 +1,9 @@
 import io
 
-from opsinstaller import menu
-from opsinstaller import nginxparser
-from opsinstaller import utils
-from opsinstaller.nginxConfigManipulator import NginxConfigManipulator
+from opsconfig import menu
+from opsconfig import nginxparser
+from opsconfig import utils
+from opsconfig.nginxConfigManipulator import NginxConfigManipulator
 
 
 def run(stage="test"):
