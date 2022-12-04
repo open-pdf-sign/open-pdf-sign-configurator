@@ -1,10 +1,11 @@
 from opsconfig import nginxInstaller
 from opsconfig import utils
 
-stage = "prod"
+# can be: "test", "prod" or "dev"
+stage = "test"
 installpath = "/etc/openpdfsign/"
 ymlConfigFilePath = installpath + "config.yml"
-if stage == "test":
+if stage == "dev":
     ymlConfigFilePath = "config.yml"
     installpath = "./"
 

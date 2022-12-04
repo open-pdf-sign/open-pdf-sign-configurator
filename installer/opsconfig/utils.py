@@ -66,8 +66,10 @@ def startServerAsService(configFile, installpath, stage="prod"):
     if stage == "prod":
         subprocess.run("service nginx reload;echo;", shell=True)
         subprocess.run("chmod +x /etc/openpdfsign/openpdfsign.jar", shell=True)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl start openpdfsign.service", shell=True)
+    if stage == "test":
+        subprocess.run("service nginx reload;echo;", shell=True)
     # write the service file
     # subprocess.check_output("systemctl enable openpdfsign")
-    subprocess.run("systemctl daemon-reload", shell=True)
-    subprocess.run("systemctl start openpdfsign.service", shell=True)
     # (re)start service
