@@ -1,5 +1,3 @@
-# open-pdf-sign-configurator
-
 open-pdf-sign-configurator is a tool that simplifies the process of setting up and configuring open-pdf-sign on an nginx server. It automates many of the steps involved in the installation and configuration process, making it quick and easy for users to get open-pdf-sign up and running on their web servers. This can help save time and reduce the potential for errors, allowing users to quickly and easily sign PDFs on their web server.
 
 After you install and activate it, all PDFs served by your Nginx server will automatically be signed by your 
@@ -8,7 +6,7 @@ SSL certificate.
 For more details please go to  https://openpdfsign.org/ 
 ## Requirements
 * Java 8 or higher
-* python 3.9 or high
+* python 3.9 or higher
 * Webserver (currently only Nginx supported)
 * SSL certificate (tested with letsencrypt)
 
@@ -27,9 +25,6 @@ If you want to remove, remove relevant blocks in your Nginx config and run
 rm /etc/systemd/system/openpdfsign.service
 rm -rf /etc/openpdfsign
 ```
-
-## Caveat
-
 
 
 ## Development
@@ -80,4 +75,6 @@ java -jar /etc/openpdfsign/openpdfsign.jar --config /etc/openpdfsign/config.yml
 ```
 visit: https://127.0.0.1/test1.pdf
 
+## License
 
+This project is licensed under the Apache 2.0-License. 
