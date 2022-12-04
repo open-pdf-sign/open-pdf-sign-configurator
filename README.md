@@ -1,3 +1,5 @@
+# open-pdf-sign-configurator
+
 open-pdf-sign-configurator is a tool that simplifies the process of setting up and configuring open-pdf-sign on an nginx server. It automates many of the steps involved in the installation and configuration process, making it quick and easy for users to get open-pdf-sign up and running on their web servers. This can help save time and reduce the potential for errors, allowing users to quickly and easily sign PDFs on their web server.
 
 After you install and activate it, all PDFs served by your Nginx server will automatically be signed by your 
