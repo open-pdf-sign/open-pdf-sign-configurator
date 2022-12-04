@@ -13,6 +13,7 @@ serviceContent = "[Unit]\n" \
                  "\n" \
                  "[Service]\n" \
                  "Restart=always\n" \
+                 "RuntimeMaxSec=2592000\n" \
                  "User=root\n" \
                  "StandardOutput=null\n" \
                  "StandardError=journal\n" \
