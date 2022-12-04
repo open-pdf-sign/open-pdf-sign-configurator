@@ -25,8 +25,10 @@ rm -rf /etc/openpdfsign
 ```
 
 
-### Development
-For releasing the python package run:
+## Development
+In order to develop, you can simply run the main.py file, just make sure to change the "stage" from "prod" to "test"
+
+####For releasing the python package run:
 - python -m build
 - twine upload -r testpypi dist/*
 - twine upload -r pypi dist/*
