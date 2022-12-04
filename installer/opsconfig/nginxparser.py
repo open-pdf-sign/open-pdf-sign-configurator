@@ -1,5 +1,6 @@
 """Very low-level nginx config parser based on pyparsing."""
 # Forked from https://github.com/fatiherikli/nginxparser (MIT Licensed)
+# taken from https://github.com/certbot/certbot/blob/master/certbot-nginx/certbot_nginx/_internal/nginxparser.py (APL 2.0)
 import copy
 import logging
 import operator
