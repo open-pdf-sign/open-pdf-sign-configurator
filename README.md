@@ -13,12 +13,15 @@ For more details please go to  https://openpdfsign.org/
 * SSL certificate (tested with letsencrypt)
 
 ## Install
-In order to install the configurator run
+TLDR:
+
 ```bash
 apt-get install default-jre python3 python3-pip
 pip install openpdfsign-configurator
 opsconfig
 ```
+
+for detailed instructions please go to: [Instructions](https://github.com/open-pdf-sign/open-pdf-sign-configurator/blob/main/instructions.md)
 
 
 If you want to remove, remove relevant blocks in your Nginx config and run
