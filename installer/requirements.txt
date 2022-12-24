@@ -31,3 +31,5 @@ twine==4.0.1
 urllib3==1.26.13
 webencodings==0.5.1
 zipp==3.10.0
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+wheel>=0.38.0 # not directly required, pinned by Snyk to avoid a vulnerability
