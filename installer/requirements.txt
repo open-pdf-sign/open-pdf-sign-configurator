@@ -30,4 +30,4 @@ tomli==2.0.1
 twine==4.0.1
 urllib3==1.26.13
 webencodings==0.5.1
-zipp==3.10.0
+zipp==3.19.1
